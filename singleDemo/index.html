@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax | test</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+    <script>
+        function test() {
+            $.ajax({
+                url: 'http://localhost:3000/index',
+                method: 'GET',
+                xhrFields: {
+                    withCredentials: true
+                },
+                data: {},
+                success: function (rs) {
+                    console.log(rs);
+                    $.ajax({
+                        url: 'http://localhost:3000',
+                        method: 'GET',
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        data: {},
+                        success: function (rs) {
+                            console.log(rs);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+        test();
+
+    </script>
+</body>
+
+</html>
